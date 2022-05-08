@@ -10,3 +10,5 @@ The program 'run_machine_1.py' runs Random Forest and Logistic Regression machin
 The program 'run_machine_2.py' works the same as the previous step but correcting for the corrupted rows, located between 10000th and 12000th observations.
 ## Step 5:
 If you want to skip steps three and four, simply run 'run_boss_program.py' and it will return the accuracy scores for the Random Forest and Logistic Regression models for both. (In this order.)
+## Bonus Question:
+Run 'run_machine_3.py' to obtain the R-Squared scores for the Hedonic Pricing Linear Model. When using 'run_boss_program.py', the last array returned is the R-Squared scores.
