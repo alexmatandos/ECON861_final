@@ -17,9 +17,6 @@ dataset = dataset.drop(columns = ['bathroom'])
 ## removing state, since all observations are located in California, and removing home functionality:
 #print(set(dataset['state']))
 dataset = dataset.drop(columns = ['state'])
-dataset = dataset.drop(columns = ['sidewalk_access'])
-dataset = dataset.drop(columns = ['kitchen_quality'])
-dataset = dataset.drop(columns = ['home_functionality'])
 
 ## checking for weird values in the covariates:
 #print(set(dataset['price_range']))
@@ -30,7 +27,7 @@ dataset = dataset.drop(columns = ['home_functionality'])
 
 ## getting dummies for 'city', 'price_range', 'maintain', 'sidewalk_access', 'kitchen_quality', 'home_functionality':
 
-dataset = pandas.get_dummies(dataset, columns = ['city', 'maintain'])
+dataset = pandas.get_dummies(dataset, columns = ['city' ,'maintain', 'sidewalk_access', 'kitchen_quality', 'home_functionality'])
 
 ## getting categorical variables for the variable that shall be forecasted, 'price_range':
 
@@ -43,12 +40,7 @@ dataset = dataset.drop(columns = ['price_range'])
 def get_rgb(file_path):
 	imimage = imageio.imread(file_path, pilmode = "RGB")
 	imimage = imimage/255
-	#imimage = imimage.sum(axis = 0).sum(axis = 0)/(imimage.shape[0]*imimage.shape[1])
-	imimage_top = imimage[0:math.ceil(imimage.shape[0]/2), :]
-	imimage_bottom = imimage[math.ceil(imimage.shape[0]/2):imimage.shape[0], :]
-	imimage_top = imimage_top.sum(axis = 0).sum(axis = 0)/(imimage_top.shape[0]*imimage_top.shape[1])
-	imimage_bottom = imimage_bottom.sum(axis = 0).sum(axis = 0)/(imimage_bottom.shape[0]*imimage_bottom.shape[1])
-	imimage = numpy.concatenate((imimage_top, imimage_bottom))
+	imimage = imimage.sum(axis = 0).sum(axis = 0)/(imimage.shape[0]*imimage.shape[1])
 	return imimage
 
 def read_picture_folder(folder_name):
