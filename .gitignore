@@ -1,3 +1,3 @@
-image_files/*.jpg
+*.jpg
 dataset.csv
 dataset_clean.csv
