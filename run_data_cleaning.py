@@ -32,6 +32,7 @@ dataset = pandas.get_dummies(dataset, columns = ['city' ,'maintain', 'sidewalk_a
 ## getting categorical variables for the variable that shall be forecasted, 'price_range':
 
 codes, uniques = pandas.factorize(dataset['price_range'])
+print(set(codes), uniques)
 dataset['price_range_categorical'] = codes
 dataset = dataset.drop(columns = ['price_range'])
 
@@ -46,7 +47,7 @@ def get_rgb(file_path):
 def read_picture_folder(folder_name):
 	results = pandas.DataFrame()
 	for file_path in glob.glob(folder_name + "/*"):
-		print(file_path)
+		#print(file_path)
 		image_features = pandas.DataFrame(get_rgb(file_path))
 		image_features = pandas.DataFrame.transpose(image_features)
 		image_features['image_filename'] = file_path.replace(folder_name + "\\", "")
